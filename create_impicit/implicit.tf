@@ -13,6 +13,15 @@ provider "azurerm" {
   }
 }
 
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "chetan_TFSTATE_storage"
+    storage_account_name = "chetantfstate"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+  }
+}
+
 resource "azurerm_resource_group" "depend" {
   name     = "chetan_depend_test"
   location = "West Europe"
